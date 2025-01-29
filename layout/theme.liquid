@@ -21,7 +21,7 @@
       {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
-
+    <p>testing if this connection working!</p>
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
@@ -373,42 +373,42 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-
     <div id="customer-count">Loading customer count...</div>
-
-<script>
-  // Replace with your private app credentials
-  const apiKey = process.env.apiKey;
-  const apiPassword =  process.env.apiPassword;
-  const shopDomain = process.env.shopDomain;
-
-  // Function to fetch customer count
-  async function getCustomerCount() {
-    try {
-      const response = await fetch(`https://${apiKey}:${apiPassword}@${shopDomain}/admin/api/2023-10/customers/count.json`);
-      const data = await response.json();
-      return data.count; // Return the customer count
-    } catch (error) {
-      console.error('Error fetching customer count:', error);
-      return null;
-    }
-  }
-
-  // Function to display customer count in the designated div
-  async function displayCustomerCount() {
-    const count = await getCustomerCount();
-    const customerCountElement = document.getElementById('customer-count');
     
-    if (count !== null) {
-      customerCountElement.textContent = `We have ${count} customers!`;
-    } else {
-      customerCountElement.textContent = 'Unable to fetch customer count.';
-    }
-  }
+    <script>
+      // Replace with your private app credentials
+      const apiKey = process.env.apiKey;
+      const apiPassword = process.env.apiPassword;
+      const shopDomain = process.env.shopDomain;
 
-  // Load the customer count after the page content is ready
-  document.addEventListener('DOMContentLoaded', displayCustomerCount);
-</script>
+      // Function to fetch customer count
+      async function getCustomerCount() {
+        try {
+          const response = await fetch(
+            `https://${apiKey}:${apiPassword}@${shopDomain}/admin/api/2023-10/customers/count.json`
+          );
+          const data = await response.json();
+          return data.count; // Return the customer count
+        } catch (error) {
+          console.error('Error fetching customer count:', error);
+          return null;
+        }
+      }
 
+      // Function to display customer count in the designated div
+      async function displayCustomerCount() {
+        const count = await getCustomerCount();
+        const customerCountElement = document.getElementById('customer-count');
+
+        if (count !== null) {
+          customerCountElement.textContent = `We have ${count} customers!`;
+        } else {
+          customerCountElement.textContent = 'Unable to fetch customer count.';
+        }
+      }
+
+      // Load the customer count after the page content is ready
+      document.addEventListener('DOMContentLoaded', displayCustomerCount);
+    </script>
   </body>
 </html>
