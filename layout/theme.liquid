@@ -377,7 +377,7 @@
     
     <script>
       console.log('Hello from the theme script!');
-      
+
       // Replace with your private app credentials
       const apiKey = process.env.apiKey;
       const apiPassword = process.env.apiPassword;
@@ -387,7 +387,7 @@
       async function getCustomerCount() {
         try {
           const response = await fetch(
-            `https://${apiKey}:${apiPassword}@${shopDomain}/admin/api/2023-10/customers/count.json`
+            `https://${apiKey}:${apiPassword}@${shopDomain}/admin/api/2025-01/customers/count.json`
           );
           const data = await response.json();
           return data.count; // Return the customer count
