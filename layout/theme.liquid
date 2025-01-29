@@ -377,9 +377,9 @@
 
 <script>
   // Replace with your private app credentials
-  const apiKey = 'your-api-key';
-  const apiPassword = 'your-api-password';
-  const shopDomain = 'your-shop-name.myshopify.com';
+  const apiKey = proccess.env.apiKey;
+  const apiPassword = proccess.env.apiPassword;
+  const shopDomain =  proccess.env.shopDomain;
 
   // Function to fetch customer count
   async function getCustomerCount() {
